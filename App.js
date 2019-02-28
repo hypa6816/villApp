@@ -10,6 +10,9 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import AppNavigator from './navigation/AppNavigator';
+import { Provider } from 'react-redux';
+import postReducer from './reducers/posts';
+import configureStore from './configureStore';
 
 
 const instructions = Platform.select({
@@ -19,13 +22,21 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-type Props = {};
-export default class App extends Component<Props> {
+const store = configureStore(postReducer);
+
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    // ...
+  }
   render() {
+    // provider allows the store to be available within the app even if there are multiple components
     return (
-      <View style={styles.container}>
-        <AppNavigator/>
-      </View>
+      <Provider store={ store }> 
+        <View style={styles.container}>
+          <AppNavigator/>
+        </View>
+      </Provider>
     );
   }
 }
