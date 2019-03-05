@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "887163660022",
+    "firebase_url": "https://villeapp-623f9.firebaseio.com",
+    "project_id": "villeapp-623f9",
+    "storage_bucket": "villeapp-623f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887163660022:android:7cea8a9281bc1328",
+        "android_client_info": {
+          "package_name": "com.villeapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "887163660022-v9brrtpnjds9c3dei5lmj2bnih5jm3u3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLn5YkQsmfTvmcZ1PX5pWeNM970-ULanQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
