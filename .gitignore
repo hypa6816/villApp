@@ -20,7 +20,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
-project.xcworkspace
+villeApp.xcworkspace
 
 # Android/IntelliJ
 #
@@ -59,6 +59,9 @@ buck-out/
 #
 .expo/
 /ios/Pods/
+/ios/Podfile.lock
+
+
 # google-services.json
 # GoogleService-Info.plist
 
