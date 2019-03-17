@@ -1,4 +1,4 @@
-import {FETCHING_POSTS, FETCHING_POSTS_SUCCESS, FETCHING_POSTS_FAILURE, CLEAR_POSTS} from '../constants/Strings';
+import {FETCHING_POSTS, FETCHING_POSTS_SUCCESS, FETCHING_POSTS_FAILURE, FETCHING_COMPANY, CLEAR_POSTS} from '../constants/Strings';
 
 export function fetchPostsFromAPI() {
     return (dispatch) => {
@@ -35,5 +35,12 @@ export function getPostsFailure() {
 export function clearAllPosts() {
     return {
         type: CLEAR_POSTS
+    }
+}
+
+export function testCompany(){
+    return 
+    {
+        a: "hello"
     }
 }
