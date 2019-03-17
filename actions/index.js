@@ -1,4 +1,5 @@
 import {FETCHING_POSTS, FETCHING_POSTS_SUCCESS, FETCHING_POSTS_FAILURE, FETCHING_COMPANY, CLEAR_POSTS} from '../constants/Strings';
+import firebase from 'react-native-firebase';
 
 export function fetchPostsFromAPI() {
     return (dispatch) => {
@@ -39,8 +40,7 @@ export function clearAllPosts() {
 }
 
 export function testCompany(){
-    return 
-    {
-        a: "hello"
+    return (dispatch) => {
+        firebase.database.ref("company");
     }
 }

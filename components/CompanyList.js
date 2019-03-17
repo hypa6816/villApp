@@ -11,9 +11,9 @@ export default class CompanyList extends React.Component {
     super();
     router: CompanyNavigator
   }
-  _redirectPage () { 
-    console.log("hello");
-    this.props.navigation.navigate('Company_Page');
+  _redirectPage (name) { 
+    console.log(name);
+    this.props.navigation.navigate('Company_Page', {company: name});
   }
 
   static navigationOptions = {
@@ -29,7 +29,7 @@ export default class CompanyList extends React.Component {
             {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
           ]}
           renderItem={({item}) =>       
-            <TouchableHighlight onPress={this._redirectPage.bind(this)}>
+            <TouchableHighlight onPress={this._redirectPage.bind(this, item)}>
               <Text style={styles.item}>
                 {item}
               </Text>

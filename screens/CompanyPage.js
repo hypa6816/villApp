@@ -12,7 +12,7 @@ export default class CompanyPage extends React.Component {
     return (
       <View style={styles.container}>
         <Text>
-        We have no friends!
+        {this.props.company}
         </Text>
       </View>
     );
