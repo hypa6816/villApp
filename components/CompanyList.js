@@ -13,7 +13,10 @@ export default class CompanyList extends React.Component {
   }
   _redirectPage (name) { 
     console.log(name);
-    this.props.navigation.navigate('Company_Page', {company: name});
+    this.props.navigation.navigate('Company_Page', {
+      companyId: name,
+      otherParam: 'anything you want here',
+    }); 
   }
 
   static navigationOptions = {

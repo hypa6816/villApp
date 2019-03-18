@@ -9,13 +9,17 @@ export default class CompanyPage extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    const itemId = navigation.getParam('companyId', 'NO-ID');
+    const otherParam = navigation.getParam('otherParam', 'some default value');
     return (
       <View style={styles.container}>
         <Text>
-        {this.props.company}
+        {itemId}
+        {otherParam}
         </Text>
-      </View>
-    );
+      </View> 
+    ); 
   }
 }
 
