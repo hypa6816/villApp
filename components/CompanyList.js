@@ -4,6 +4,9 @@ import { StyleSheet, Text, SectionList, TouchableHighlight } from 'react-native'
 import CompanyNavigator from '../navigation/CompanyNavigator';
 import { ScrollView } from 'react-native-gesture-handler';
 
+import Search from '../components/Search'
+
+
 
 export default class CompanyList extends React.Component {
   
@@ -20,12 +23,13 @@ export default class CompanyList extends React.Component {
   }
 
   static navigationOptions = {
-    title: "CompanyList",
+    title: "Companies",
   };
 
   render() {
     return (
       <ScrollView styles={styles.container}>
+        <Search/>
         <SectionList
           sections={[
             {title: 'D', data: ['Devin']},
