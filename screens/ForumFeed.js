@@ -1,16 +1,15 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text } from 'react-native';
-import Search from '../components/Search'
-export default class LinksScreen extends React.Component {
+export default class ForumFeed extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    header: null,
   };
 
   render() {
+    
     return (
       <ScrollView style={styles.container}>
-        <Text>Welcome to Links!</Text>
-        <Search/>
+        <Text>Welcome to FORUM FEED!</Text>
       </ScrollView>
     );
   }
