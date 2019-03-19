@@ -8,9 +8,13 @@ import Search from '../components/Search'
 
 import mockData from '../_mockData/googleplace.json'
 
-console.log(mockData)
+import {connect} from 'react-redux';
 
-export default class CompanyList extends React.Component {
+import {FBfetchCompanies} from '../actions';
+
+
+
+class CompanyList extends React.Component {
   
   constructor(){
     super();
@@ -18,6 +22,8 @@ export default class CompanyList extends React.Component {
   }
   _redirectPage (company) { 
     console.log(name);
+    console.log(this.props.company);
+    
     this.props.navigation.navigate('Company_Page', company); 
   }
 
@@ -30,6 +36,9 @@ export default class CompanyList extends React.Component {
   };
 
   render() {
+    this.props.getCompanies;
+
+    const { company, companyFetching } = this.props.company;
     return (
       <ScrollView styles={styles.container}>
         <Search/>
@@ -85,3 +94,19 @@ const styles = StyleSheet.create({
     height: 44,
   },
 })
+
+
+function mapStateToProps(state){
+  return {
+    company: state.company
+  }
+}
+function mapDispatchToProps (dispatch) {
+  return {
+    getCompanies: () => dispatch(FBfetchCompanies()),
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+  )(CompanyList)

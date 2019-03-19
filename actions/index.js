@@ -1,4 +1,4 @@
-import {FETCHING_POSTS, FETCHING_POSTS_SUCCESS, FETCHING_POSTS_FAILURE, FETCHING_COMPANY, CLEAR_POSTS} from '../constants/Strings';
+import {FETCHING_POSTS, FETCHING_POSTS_SUCCESS, FETCHING_POSTS_FAILURE, FETCHING_COMPANY, FETCHING_COMPANY_SUCCESS, CLEAR_POSTS} from '../constants/Strings';
 import firebase from 'react-native-firebase';
 
 export function fetchPostsFromAPI() {
@@ -39,8 +39,27 @@ export function clearAllPosts() {
     }
 }
 
-export function testCompany(){
+//
+// Firebase
+//
+
+export function FBfetchCompanies(){
+    var comp = firebase.database.ref("company");
     return (dispatch) => {
-        firebase.database.ref("company");
+        dispatch(getCompaniesSuccess())
+        data: comp
     }
+}
+
+export function getCompanies() {
+  return {
+    type: FETCHING_COMPANY
+  }
+}
+
+export function getCompaniesSuccess() {
+  return {
+    type: FETCHING_COMPANY_SUCCESS,
+    data,
+  }
 }
