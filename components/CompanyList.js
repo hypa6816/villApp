@@ -13,7 +13,6 @@ import {connect} from 'react-redux';
 import {FBfetchCompanies} from '../actions';
 
 
-
 class CompanyList extends React.Component {
   
   constructor(){
@@ -21,7 +20,6 @@ class CompanyList extends React.Component {
     router: CompanyNavigator
   }
   _redirectPage (company) { 
-    console.log(name);
     console.log(this.props.company);
     
     this.props.navigation.navigate('Company_Page', company); 
