@@ -6,7 +6,9 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 import Search from '../components/Search'
 
+import mockData from '../_mockData/googleplace.json'
 
+console.log(mockData)
 
 export default class CompanyList extends React.Component {
   
@@ -14,12 +16,13 @@ export default class CompanyList extends React.Component {
     super();
     router: CompanyNavigator
   }
-  _redirectPage (name) { 
+  _redirectPage (company) { 
     console.log(name);
-    this.props.navigation.navigate('Company_Page', {
-      companyId: name,
-      otherParam: 'anything you want here',
-    }); 
+    this.props.navigation.navigate('Company_Page', company); 
+  }
+
+  selectionList = () => {
+    return(mockData.results)
   }
 
   static navigationOptions = {
@@ -31,14 +34,15 @@ export default class CompanyList extends React.Component {
       <ScrollView styles={styles.container}>
         <Search/>
         <SectionList
+        // sections = {this.selectionList}
           sections={[
-            {title: 'D', data: ['Devin']},
-            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+            {title: 'Boulder', data: mockData.results
+            },
           ]}
           renderItem={({item}) =>       
             <TouchableHighlight onPress={this._redirectPage.bind(this, item)}>
               <Text style={styles.item}>
-                {item}
+                {item.name}
               </Text>
             </TouchableHighlight>
           }

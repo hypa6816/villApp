@@ -15,13 +15,16 @@ export default class CompanyPage extends React.Component {
 
 
   static navigationOptions = {
-    title: "CompanyPage",
+    title: "CompanyPage", 
   };
 
   render() {
     const { navigation } = this.props;
-    const itemId = navigation.getParam('companyId', 'NO-ID');
-    const otherParam = navigation.getParam('otherParam', 'some default value');
+    const name = navigation.getParam('name', 'NO-ID');
+    const location = navigation.getParam('vicinity', 'NO-VICINITY'); 
+    const icon = navigation.getParam("icon", "http://maps.gstatic.com/mapfiles/place_api/icons/travel_agent-71.png")
+
+    const photo = navigation.getParam('photos', 'https://bootdey.com/img/Content/avatar/avatar6.png');
     return (
       // <ProductScreen/>
       <View style={styles.container}>
@@ -29,10 +32,10 @@ export default class CompanyPage extends React.Component {
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>{itemId}</Text>
-              <Text style={styles.info}>UX Designer / Mobile developer</Text>
+              <Text style={styles.name}>{name}</Text>
+              <Text style={styles.info}>{location}</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
-              
+              <Image style={styles.icon} source={{uri: icon}}></Image>
               <TouchableOpacity style={styles.buttonContainer}>
                 <Text>Opcion 1</Text>  
               </TouchableOpacity>              
@@ -102,5 +105,9 @@ const styles = StyleSheet.create({
     borderRadius:30,
     backgroundColor: "#00BFFF",
   },
+  icon:{
+    height: 25,
+    width: 25
+  }
 });
 
