@@ -6,7 +6,8 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
     "android": "npm install && react-native link && react-native run-android",
-    "ios": "npm install && react-native link && react-native run-ios"
+    "ios": "npm install && react-native link && react-native run-ios",
+    "avd": "emulator -avd Pixel_2_XL_API_28"
   },
   "dependencies": {
     "getstream": "^4.2.1",

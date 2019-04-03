@@ -2,8 +2,23 @@ import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 import SafeAreaView from 'react-native-safe-area-view';
-import { StreamApp, FlatFeed } from 'react-native-activity-feed';
+import { StreamApp, 
+  FlatFeed, 
+  StatusUpdateForm, 
+  Activity,  
+  LikeButton } from 'react-native-activity-feed';
 import {STREAM_API_KEY, STREAM_API_URL, STREAM_APP_ID} from 'react-native-dotenv';
+
+const CustomActivity = (props) => {
+  return (
+    <Activity
+      {...props}
+      Footer={
+        <LikeButton {...props} />
+      }
+    />
+  );
+};
 
 export default class ForumFeed extends React.Component {
 
@@ -30,7 +45,7 @@ export default class ForumFeed extends React.Component {
 
   async componentDidMount() {
     try {
-      const userToken = await this.getUserToken();
+      const userToken = await this.getUserToken("JEEB");
       this.setState({ userToken });
     } catch (err) {
       // handle errors
@@ -56,7 +71,10 @@ export default class ForumFeed extends React.Component {
               appId={id}
               token={token}
           >
-            <FlatFeed />
+            <FlatFeed
+            Activity={CustomActivity} notify 
+            userId="JEEB"/>
+            <StatusUpdateForm feedGroup="timeline" />
           </StreamApp>
         </SafeAreaView>
         );
