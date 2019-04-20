@@ -9,12 +9,20 @@ import { StreamApp,
   LikeButton } from 'react-native-activity-feed';
 import {STREAM_API_KEY, STREAM_API_URL, STREAM_APP_ID} from 'react-native-dotenv';
 
+import Loader from 'react-native-easy-content-loader';
+import { CommentBox, CommentItem, CommentsContainer } from 'react-native-activity-feed-core';
+
 const CustomActivity = (props) => {
   return (
     <Activity
       {...props}
       Footer={
-        <LikeButton {...props} />
+        <View>
+            <LikeButton {...props} />
+            {/* <CommentItem {...props} /> */}
+            {/* <CommentsContainer {...props} /> */}
+            <CommentBox {...props} />
+        </View>
       }
     />
   );
@@ -45,7 +53,7 @@ export default class ForumFeed extends React.Component {
 
   async componentDidMount() {
     try {
-      const userToken = await this.getUserToken("JEEB");
+      const userToken = await this.getUserToken("test");
       this.setState({ userToken });
     } catch (err) {
       // handle errors
@@ -61,11 +69,9 @@ export default class ForumFeed extends React.Component {
       const token = this.state.userToken.toString()
 
         return (
-          // <ScrollView style={styles.container}>
-          //   <Text>Welcome to FORUM FEED!</Text>
-          // </ScrollView>
-    
           <SafeAreaView style={{flex: 1}} forceInset={{ top: 'always' }}>
+          <Text> BoUleder SofTware ENG </Text>
+
           <StreamApp
               apiKey={api}
               appId={id}
@@ -73,13 +79,14 @@ export default class ForumFeed extends React.Component {
           >
             <FlatFeed
             Activity={CustomActivity} notify 
-            userId="JEEB"/>
+            userId="test"/>
             <StatusUpdateForm feedGroup="timeline" />
           </StreamApp>
         </SafeAreaView>
         );
       
     } else {
+
       return(
         <View>
           <Text>Loading...</Text>
@@ -89,6 +96,7 @@ export default class ForumFeed extends React.Component {
     } 
   } 
 }
+
 
 const styles = StyleSheet.create({
   container: {
