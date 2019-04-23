@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import productData from './product.json'
 
-import { NavAbsolute } from './NavAbsolute'
+import { NavAbsolute } from '../../components'
 import Product from './Product'
 
 const ProductScreen = () => <Product {...productData} />
@@ -19,7 +19,7 @@ ProductScreen.navigationOptions = ({ navigation }) => ({
 })
 
 ProductScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
+  navigation: PropTypes.object,
 }
 
 export default ProductScreen

@@ -8,6 +8,26 @@ import {
 
 } from 'react-native-activity-feed';
 
+import Product from './Product1/Product';
+
+const Colors = {
+    red: '#FF3B30',
+    orange: '#FF9500',
+    yellow: '#FFCC00',
+    green: '#4CD964',
+    tealBlue: '#5AC8FA',
+    blue: '#007AFF',
+    purple: '#5856D6',
+    pink: '#FF2D55',
+  
+    white: '#FFFFFF',
+    customGray: '#EFEFF4',
+    lightGray: '#E5E5EA',
+    lightGray2: '#D1D1D6',
+    midGray: '#C7C7CC',
+    gray: '#8E8E93',
+    black: '#000000',
+  }
 
 
 export default class CompanySinglePost extends React.Component {
@@ -27,113 +47,16 @@ export default class CompanySinglePost extends React.Component {
   });
 
   
-
+  
   render() {
+
+    
     const { navigation } = this.props;
-    // const activity = navigation.getParam('activity');
-    // const feedGroup = navigation.getParam('feedGroup');
-    // const userId = navigation.getParam('userId');
     const info = navigation.state.params.activity;
-
-    const desc = info.object;
-    const website = info.website;
-    const name = info.name;
-    const employeeCount = info.local_employees;
-    const image = info.profileImage.toString();
-    const loc = info.location;
-    const type = info.industry;
-
-
-
+    console.log(info);
     return(
-        <View style={styles.container}>
-          <View style={styles.header}></View>
-          {/* <Image style={styles.avatar} source={{uri:{image}}}/> */}
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <Text style={styles.name}>{name}</Text>
-              <Text style={styles.info}>{loc}</Text>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>{employeeCount}</Text> 
-              </TouchableOpacity>
-              <Text style={styles.description}>
-              {website}
-              </Text>
-              <Text style={styles.description}>
-              {desc}
-              </Text>
-              {/* <Image style={styles.icon} source={{uri: image}}></Image>*/}
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>{employeeCount}</Text> 
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>{type}</Text> 
-              </TouchableOpacity>
-            </View>
-        </View>
-      </View>
+        <Product {...info}>
+        </Product>
     );
   }
 }
-
-const styles = StyleSheet.create({
-    header:{
-      backgroundColor: "#00BFFF",
-      height:200,
-    },
-    avatar: {
-      width: 130,
-      height: 130,
-      borderRadius: 63,
-      borderWidth: 4,
-      borderColor: "white",
-      marginBottom:10,
-      alignSelf:'center',
-      position: 'absolute',
-      marginTop:130
-    },
-    name:{
-      fontSize:22,
-      color:"#FFFFFF",
-      fontWeight:'600',
-    },
-    body:{
-      marginTop:40,
-    },
-    bodyContent: {
-      flex: 1,
-      alignItems: 'center',
-      padding:30,
-    },
-    name:{
-      fontSize:28,
-      color: "#696969",
-      fontWeight: "600"
-    },
-    info:{
-      fontSize:16,
-      color: "#00BFFF",
-      marginTop:10
-    },
-    description:{
-      fontSize:16,
-      color: "#696969",
-      marginTop:10,
-      textAlign: 'center'
-    },
-    buttonContainer: {
-      marginTop:10,
-      height:45,
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginBottom:20,
-      width:250,
-      borderRadius:30,
-      backgroundColor: "#00BFFF",
-    },
-    icon:{
-      height: 25,
-      width: 25
-    }
-  });

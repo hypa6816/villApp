@@ -11,6 +11,7 @@ import {
 } from 'react-native-activity-feed';
 
 
+
 export default class ForumScreen extends React.Component {
   constructor(props){
     super(props);
