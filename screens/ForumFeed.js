@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  StyleSheet
+} from 'react-native';
 
 import SafeAreaView from 'react-native-safe-area-view';
 import { StreamApp, 
@@ -9,8 +15,11 @@ import { StreamApp,
   LikeButton } from 'react-native-activity-feed';
 import {STREAM_API_KEY, STREAM_API_URL, STREAM_APP_ID} from 'react-native-dotenv';
 
-import Loader from 'react-native-easy-content-loader';
 import { CommentBox, CommentItem, CommentsContainer } from 'react-native-activity-feed-core';
+
+import PostIcon from '../images/icons/post.png';
+
+
 
 const CustomActivity = (props) => {
   return (
@@ -36,11 +45,36 @@ export default class ForumFeed extends React.Component {
       userToken: null,
    }
   }
-  static navigationOptions = {
-    // header: null,
-    title: "Boulder Engineers", 
-
-  };
+  static navigationOptions = ({ navigation }: Props) => ({
+    title: 'BOULDER ENGINEERS',
+    headerTitleStyle: {
+      fontWeight: '500',
+      fontSize: 13,
+      marginLeft: 19,
+    },
+    headerLeft: (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Profile')}
+        style={{ paddingLeft: 15 }}
+      >
+        <Image
+          source={
+            require("../images/bc_logo.png")
+          }
+          style={{ width: 23, height: 23 }}
+          noShadow
+        />
+      </TouchableOpacity>
+    ),
+    headerRight: (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('NewPost')}
+        style={{ paddingRight: 15 }}
+      >
+        <Image source={PostIcon} style={{ width: 23, height: 23 }} />
+      </TouchableOpacity>
+    ),
+  });
 
 
   async getUserToken(userID) {
@@ -55,7 +89,7 @@ export default class ForumFeed extends React.Component {
 
   async componentDidMount() {
     try {
-      const userToken = await this.getUserToken("test");
+      const userToken = await this.getUserToken("JEEB");
       this.setState({ userToken });
     } catch (err) {
       // handle errors
@@ -79,7 +113,7 @@ export default class ForumFeed extends React.Component {
           >
             <FlatFeed
             Activity={CustomActivity} notify 
-            userId="test"/>
+            userId="JEEB"/>
             <StatusUpdateForm feedGroup="timeline" />
           </StreamApp>
         </SafeAreaView>
