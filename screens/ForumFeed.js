@@ -37,7 +37,9 @@ export default class ForumFeed extends React.Component {
    }
   }
   static navigationOptions = {
-    header: null,
+    // header: null,
+    title: "Boulder Engineers", 
+
   };
 
 
@@ -70,8 +72,6 @@ export default class ForumFeed extends React.Component {
 
         return (
           <SafeAreaView style={{flex: 1}} forceInset={{ top: 'always' }}>
-          <Text> BoUleder SofTware ENG </Text>
-
           <StreamApp
               apiKey={api}
               appId={id}

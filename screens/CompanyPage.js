@@ -1,113 +1,76 @@
 import React from 'react';
+
+
+import SafeAreaView from 'react-native-safe-area-view';
+
 import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  TouchableOpacity
+  Text
 } from 'react-native';
 
-// import ProfileScreen from './Profile1/index';
-// import ProductScreen from './Product1/index';
+import { 
+  FlatFeed,
+  StreamApp,
+} from 'react-native-activity-feed';
+
+import {STREAM_API_KEY, STREAM_API_URL, STREAM_APP_ID} from 'react-native-dotenv';
+
 
 
 export default class CompanyPage extends React.Component {
-
+  constructor(props){
+    super(props);
+    this.state = {
+      userToken: null,
+   }
+  }
 
   static navigationOptions = {
-    title: "CompanyPage", 
+    header: null,
   };
 
-  render() {
-    const { navigation } = this.props;
-    const name = navigation.getParam('name', 'NO-ID');
-    const location = navigation.getParam('vicinity', 'NO-VICINITY'); 
-    const icon = navigation.getParam("icon", "http://maps.gstatic.com/mapfiles/place_api/icons/travel_agent-71.png")
+  async getUserToken(userID) {
+    let url = STREAM_API_URL + "/getUserStreamToken?userId=" + userID; 
+    try {
+      const response = await fetch(url)
+      return (await response.json()).userToken
+    } catch (err) {
+      console.log(err)
+    }
+  }
 
-    const photo = navigation.getParam('photos', 'https://bootdey.com/img/Content/avatar/avatar6.png');
-    return (
-      // <ProductScreen/>
-      <View style={styles.container}>
-          <View style={styles.header}></View>
-          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
-          <View style={styles.body}>
-            <View style={styles.bodyContent}>
-              <Text style={styles.name}>{name}</Text>
-              <Text style={styles.info}>{location}</Text>
-              <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
-              <Image style={styles.icon} source={{uri: icon}}></Image>
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 1</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Opcion 2</Text> 
-              </TouchableOpacity>
-            </View>
-        </View>
-      </View>
-    ); 
+  async componentDidMount() {
+    try {
+      const userToken = await this.getUserToken("test");
+      this.setState({ userToken });
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  render() {
+    const api = STREAM_API_KEY;
+    const id =  STREAM_APP_ID;
+      if (this.state.userToken) {
+        const token = this.state.userToken.toString()
+        return(
+        // render child component that depends on async data
+        <SafeAreaView style={{flex: 1}} forceInset={{ top: 'always' }}>
+          <StreamApp
+            apiKey={api}
+            appId={id} 
+            token={token}
+          >
+            <FlatFeed feedGroup="food"
+            
+            />
+          </StreamApp>
+        </SafeAreaView>
+        );
+        
+      } else {
+        return(
+          <Text> Loading... </Text>
+        );
+      }
   }
 }
-
-const styles = StyleSheet.create({
-  header:{
-    backgroundColor: "#00BFFF",
-    height:200,
-  },
-  avatar: {
-    width: 130,
-    height: 130,
-    borderRadius: 63,
-    borderWidth: 4,
-    borderColor: "white",
-    marginBottom:10,
-    alignSelf:'center',
-    position: 'absolute',
-    marginTop:130
-  },
-  name:{
-    fontSize:22,
-    color:"#FFFFFF",
-    fontWeight:'600',
-  },
-  body:{
-    marginTop:40,
-  },
-  bodyContent: {
-    flex: 1,
-    alignItems: 'center',
-    padding:30,
-  },
-  name:{
-    fontSize:28,
-    color: "#696969",
-    fontWeight: "600"
-  },
-  info:{
-    fontSize:16,
-    color: "#00BFFF",
-    marginTop:10
-  },
-  description:{
-    fontSize:16,
-    color: "#696969",
-    marginTop:10,
-    textAlign: 'center'
-  },
-  buttonContainer: {
-    marginTop:10,
-    height:45,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:30,
-    backgroundColor: "#00BFFF",
-  },
-  icon:{
-    height: 25,
-    width: 25
-  }
-});
-
