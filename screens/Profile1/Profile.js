@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Icon } from 'react-native-elements'
+import Timeline from 'react-native-timeline-listview'
 import {
   Image,
   ImageBackground,
@@ -93,12 +94,22 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     textAlign: 'center',
   },
+  userBioRow: {
+      marginLeft: 40,
+      marginRight: 40,
+    },
+    userBioText: {
+      color: 'gray',
+      fontSize: 13.5,
+      textAlign: 'center',
+    },
 })
 
 class Contact extends Component {
   static propTypes = {
     avatar: PropTypes.string.isRequired,
     avatarBackground: PropTypes.string.isRequired,
+    bio: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     address: PropTypes.shape({
       city: PropTypes.string.isRequired,
@@ -111,6 +122,13 @@ class Contact extends Component {
         name: PropTypes.string.isRequired,
       })
     ).isRequired,
+    resume: PropTypes.arrayOf(
+          PropTypes.shape({
+            time: PropTypes.string.isRequired,
+            title: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+          })
+        ).isRequired,
     tels: PropTypes.arrayOf(
       PropTypes.shape({
         id: PropTypes.number.isRequired,
@@ -153,6 +171,7 @@ class Contact extends Component {
       avatarBackground,
       name,
       address: { city, country },
+      bio,
     } = this.props
 
     return (
@@ -172,22 +191,10 @@ class Contact extends Component {
               }}
             />
             <Text style={styles.userNameText}>{name}</Text>
-            <View style={styles.userAddressRow}>
-              <View>
-                <Icon
-                  name="place"
-                  underlayColor="transparent"
-                  iconStyle={styles.placeIcon}
-                  onPress={this.onPressPlace}
-                />
-              </View>
-              <View style={styles.userCityRow}>
-                <Text style={styles.userCityText}>
-                  {city}, {country}
-                </Text>
-              </View>
-            </View>
           </View>
+          <View style={styles.userBioRow}>
+                    <Text style={styles.userBioText}>{bio}</Text>
+                 </View>
         </ImageBackground>
       </View>
     )
@@ -230,6 +237,24 @@ class Contact extends Component {
     />
   )
 
+  renderResume = () => {
+  const {
+      resume,
+      } = this.props
+      return (
+      <Timeline
+        data={resume}
+        circleSize={20}
+        circleColor='rgb(45,156,219)'
+        lineColor='rgb(45,156,219)'
+        timeContainerStyle={{minWidth:52, marginTop: -5}}
+        timeStyle={{textAlign: 'center', backgroundColor:'#ff9797', color:'white', padding:5, borderRadius:13}}
+        descriptionStyle={{color:'gray'}}
+        options={{style:{paddingTop:5}}}
+        innerCircle={'dot'}
+        />
+      )
+  }
   render() {
     return (
       <ScrollView style={styles.scroll}>
@@ -239,6 +264,8 @@ class Contact extends Component {
             {this.renderTel()}
             {Separator()}
             {this.renderEmail()}
+            {Separator()}
+            {this.renderResume()}
           </Card>
         </View>
       </ScrollView>
