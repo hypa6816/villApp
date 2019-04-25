@@ -1,5 +1,6 @@
 import { Dimensions } from 'react-native'
-
+import { Platform } from 'react-native';
+const mainColor = '#01C89E'
 const Colors = {
   red: '#FF3B30',
   orange: '#FF9500',
@@ -59,16 +60,48 @@ export default {
     // marginRight: 15,
   },
   footer: {
-    // position: 'absolute',
-    // flex: 0.1,
-    // left: 0,
-    // right: 0,
-    // bottom: 0,
-    // backgroundColor: '#F64A25',
-    // flexDirection: 'row',
-    // height: 65,
-    // alignItems: 'center',
+    position: 'absolute',
+    flex: 0.1,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: '#F64A25',
+    flexDirection: 'row',
+    height: 65,
+    alignItems: 'center',
   },
+
+
+  headerColumn: {
+    backgroundColor: 'transparent',
+    ...Platform.select({
+      ios: {
+        alignItems: 'center',
+        elevation: 1,
+        marginTop: -1,
+      },
+      android: {
+        alignItems: 'center',
+      },
+    }),
+  },
+  userImage: {
+    borderColor: mainColor,
+    borderRadius: 85,
+    borderWidth: 3,
+    height: 170,
+    marginBottom: 15,
+    width: 170,
+  },
+  userNameText: {
+    color: '#FFF',
+    fontSize: 22,
+    fontWeight: 'bold',
+    paddingBottom: 8,
+    textAlign: 'center',
+  },
+
+
   buttonFooter: {
     alignItems: 'center',
     justifyContent: 'center',

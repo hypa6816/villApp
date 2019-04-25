@@ -114,6 +114,16 @@ class Product extends Component {
             }}
             style={styles.coverImage}
           >
+
+          <View style={styles.headerColumn}>
+            <Image
+              style={styles.userImage}
+              source={{
+                uri: profileImage,
+              }}
+            />
+            <Text style={styles.userNameText}>{name}</Text>
+          </View>
           </ImageBackground>
         </View>
       </View>

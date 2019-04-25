@@ -19,6 +19,7 @@
     "react-native-firebase": "5.2.3",
     "react-native-gesture-handler": "^1.0.16",
     "react-native-image-picker": "latest",
+    "react-native-spinkit": "^1.2.0",
     "react-native-svg": "^9.2.4",
     "react-native-table-component": "^1.2.0",
     "react-native-timeline-listview": "^0.2.3",
