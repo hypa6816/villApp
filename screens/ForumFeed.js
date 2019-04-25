@@ -19,6 +19,7 @@ import { CommentBox, CommentItem, CommentsContainer } from 'react-native-activit
 
 import PostIcon from '../images/icons/post.png';
 
+var Spinner = require('react-native-spinkit');
 
 
 const CustomActivity = (props) => {
@@ -45,6 +46,10 @@ export default class ForumFeed extends React.Component {
       userToken: null,
    }
   }
+
+
+
+
   static navigationOptions = ({ navigation }: Props) => ({
     title: 'BOULDER ENGINEERS',
     headerTitleStyle: {
@@ -122,20 +127,31 @@ export default class ForumFeed extends React.Component {
     } else {
 
       return(
-        <View>
-          <Text>Loading...</Text>
+        
+        <View style={styles.container}>
+        <Spinner 
+          style={styles.spinner} 
+          isVisible={this.state.isVisible} 
+          size={100}
+          type='9CubeGrid'
+  //  types: ['CircleFlip', 'Bounce', 'Wave', 'WanderingCubes', 'Pulse', 'ChasingDots', 'ThreeBounce', 'Circle', '9CubeGrid', 'WordPress', 'FadingCircle', 'FadingCircleAlt', 'Arc', 'ArcAlt'],
+  //"#56b9d1"
+          color="#efefff"/>
         </View>
       );
       // initial render
     } 
   } 
 }
-
-
-const styles = StyleSheet.create({
+var styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#fff',
+  },
+
+  spinner: {
+    marginBottom: 50
   },
 });
