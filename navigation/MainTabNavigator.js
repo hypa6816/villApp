@@ -3,6 +3,7 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
+
 import HomeScreen from '../screens/HomeScreen';
 import ForumScreen from '../screens/ForumScreen';
 import CompanyScreen from '../screens/CompanyScreen';

@@ -1,6 +1,103 @@
 import React from 'react';
 
 import PropTypes from 'prop-types'
+
+import {
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  Button
+} from 'react-native';
+import {connect} from 'react-redux';
+import {fetchPostsFromAPI, clearAllPosts, logOut} from '../actions';
+import { fonts, colors } from '../theme';
+import firebase from 'react-native-firebase';
+
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
+  state = {
+    user: ''
+  }
+  
+  logout() {
+    firebase.auth().signOut()
+      .then(() => {
+        this.props.dispatchLogout()
+        this.props.navigation.navigate('SignIn')
+      })
+      .catch(err => {
+        this.props.dispatchLogout()
+        this.props.navigation.navigate('SignIn')
+        console.warn('err: ', err)
+      })
+  }
+  render() {
+    const {posts, postsFetching} = this.props.posts
+    return (
+      <View style={styles.container}>
+        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+          <View style={styles.welcomeContainer}>
+          <Text style={styles.welcome}>Welcome {this.state.user}!</Text>
+          <Text onPress={this.logout.bind(this)} style={styles.logout}>Logout</Text>
+          <Button onPress={this.props.getPosts} title="Get Job Postings"/>
+          { postsFetching && <Text>Loading...</Text>}
+          {
+            posts.length ? (
+              <Button onPress={this.props.clearPosts} title="Clear Job Postings"/>
+            ) : null
+          }
+          {
+            posts.length ? (
+              posts.map((post, i) => {
+                return (
+                <View key={i}>
+                  <Text style= {styles.jobNumber}>Job Number: {i}</Text>
+                  <Text>Title: {post.title}</Text>
+                  <Text>Type: {post.type}</Text>
+                  <Text>Location: {post.location}</Text>
+                  <Text>Link: {post.url}</Text>
+                </View>
+                )
+              })
+            ) : null
+          }
+          </View>
+        </ScrollView>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  jobNumber: {
+    fontSize: 20,
+    backgroundColor: 'skyblue'
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+    backgroundColor: 'skyblue',
+    height: 50,
+  },
+  logout: {
+    fontFamily: fonts.light,
+    color: 'rgba(0, 0, 0, .85)',
+    marginBottom: 26,
+    fontSize: 22,
+    textAlign: 'center'
+  },
+  contentContainer: {
+    paddingTop: 30,
+  }
+});
 const contactData = {
   "name": "Joey Tribbiani",
   "username": "Leola_VonRueden",
@@ -16,8 +113,9 @@ const contactData = {
     "geo": {
       "lat": "-75.8513",
       "lng": "81.3262"
-    }
-  },
+    }  
+},
+  
   "website": "destany.org",
   "bio":
     "Web & Mobile UI/UX designer, Motion designer following the latest ui & ux trends",
@@ -111,6 +209,19 @@ ProfileScreen.navigationOptions = () => ({
 
 ProfileScreen.propTypes = {
   navigation: PropTypes.object.isRequired,
+}
+function mapStateToProps(state){
+  return {
+    posts: state.posts,
+    auth: state.auth
+  }
+}
+function mapDispatchToProps (dispatch) {
+  return {
+    getPosts: () => dispatch(fetchPostsFromAPI()),
+    clearPosts: () => dispatch(clearAllPosts()),
+    dispatchLogout: () => dispatch(logOut()),
+  }
 }
 
 export default ProfileScreen
