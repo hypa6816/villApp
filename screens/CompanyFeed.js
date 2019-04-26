@@ -81,14 +81,6 @@ export default class CompanyFeed extends React.Component {
                     Footer={
                       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                         <LikeButton {...props} />
-
-                        <ReactionIcon
-                          icon={ReplyIcon}
-                          labelSingle="comment"
-                          labelPlural="comments"
-                          counts={props.activity.reaction_counts}
-                          kind="comment"
-                        />
                       </View>
                     }
                   />

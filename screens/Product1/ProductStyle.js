@@ -1,4 +1,4 @@
-import { Dimensions } from 'react-native'
+import { Dimensions, Platform } from 'react-native'
 
 const Colors = {
   red: '#FF3B30',
@@ -20,6 +20,31 @@ const Colors = {
 }
 
 export default {
+  userImage: {
+    backgroundColor: "#fff",
+    borderColor: "#000",
+    borderRadius: 100,
+    borderWidth: 2,
+    height: 190,
+    marginTop: 153,
+    width: 190,
+  },
+  headerColumn: {
+    backgroundColor: 'transparent',
+    ...Platform.select({
+      ios: {
+        alignItems: 'center',
+        elevation: 1,
+        marginTop: -1,
+      },
+      android: {
+        alignItems: 'center',
+      },
+    }),
+  },
+
+
+
   cardContainer: {
     flex: 1,
   },
@@ -99,7 +124,8 @@ export default {
     fontSize: 18,
   },
   priceText: {
-    marginBottom: 5,
+    marginTop: 15,
+    marginBottom: 0,
     letterSpacing: 1,
 
     color: Colors.black,
@@ -107,7 +133,7 @@ export default {
     fontWeight: '400',
   },
   detailText: {
-    marginBottom: 4,
+    marginBottom: 0,
     color: Colors.black,
     fontSize: 22,
     fontWeight: '600',

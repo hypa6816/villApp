@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
 import {
   ImageBackground,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
+<<<<<<< HEAD
   Linking
+=======
+  Linking,
+>>>>>>> restructured UI and added dummy data
 } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -40,7 +45,7 @@ class Product extends Component {
 
 
     total_employees: PropTypes.string,
-    website: PropTypes.string,
+    website: PropTypes.string.isRequired,
 
 
     profileImage: PropTypes.string.isRequired,
@@ -69,7 +74,6 @@ class Product extends Component {
       name,
       location,
       industry,
-      
     } = this.props;
 
     return (
@@ -93,7 +97,16 @@ class Product extends Component {
         }}
       >
         <TouchableOpacity style={[styles.navigatorButton, { flex: 2 }]}>
+<<<<<<< HEAD
           <Text style={styles.navigatorText} onPress={ ()=> Linking.openURL(website) }>{website}</Text>
+=======
+          <Text 
+          style={styles.navigatorText} 
+          onPress={() => Linking.openURL({website})}>
+            VISIT WEBSITE
+            {typeof website}
+          </Text>
+>>>>>>> restructured UI and added dummy data
         </TouchableOpacity>
         <TouchableOpacity style={[styles.navigatorButton, { flex: 1 }]}>
           <Text style={styles.navigatorText}>{total_employees}</Text>
@@ -110,11 +123,17 @@ class Product extends Component {
       <View style={styles.headerContainer}>
         <View style={styles.coverContainer}>
           <ImageBackground
-            source={{
-              uri: profileImage,
-            }}
+            source={require("../../images/coverSplash.png")}
             style={styles.coverImage}
           >
+          <View style={styles.headerColumn}>
+            <Image
+                style={styles.userImage}
+                source={{
+                  uri: profileImage,
+                }}
+              />
+          </View>
           </ImageBackground>
         </View>
       </View>
