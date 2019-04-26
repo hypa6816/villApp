@@ -23,6 +23,7 @@ import {
 
 import PostIcon from '../images/icons/post.png';
 
+var Spinner = require('react-native-spinkit');
 
 const CustomActivity = (props) => {
   return (
