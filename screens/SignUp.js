@@ -139,25 +139,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
-  inputContainer: {
-    marginTop: 20
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 40
-  },
-  greeting: {
-    marginTop: 20,
-    fontFamily: fonts.light,
-    fontSize: 24
-  },
-  greeting2: {
-    fontFamily: fonts.light,
-    color: '#666',
-    fontSize: 24,
-    marginTop: 5
-  },
   heading: {
     flexDirection: 'row'
   },
@@ -166,9 +147,29 @@ const styles = StyleSheet.create({
     height: 38
   },
   errorMessage: {
-    fontFamily: fonts.base,
-    fontSize: 14,
+    fontSize: 12,
     marginTop: 10,
-    color: 'transparent'
+    color: 'transparent',
+    fontFamily: fonts.base
+  },
+  inputContainer: {
+    marginTop: 20
+  },
+  container: {
+    paddingTop: 10,
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 40
+  },
+  greeting: {
+    marginTop: 20,
+    fontSize: 24,
+    fontFamily: fonts.light
+  },
+  greeting2: {
+    color: '#666',
+    fontSize: 24,
+    marginTop: 5,
+    fontFamily: fonts.light
   }
 });
