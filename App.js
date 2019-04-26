@@ -5,15 +5,31 @@ import TabNavigator from './navigation/AuthTabNavigator';
 import { StatusBar } from 'react-native'
 
 import { connect } from 'react-redux'
+import SplashScreen from './screens/SplashScreen';
 
 
 class App extends React.Component {
+  
   state = {
     user: {},
-    isLoading: true
+    isLoading: true,
+    isSplashLoading: true,
+  }
+  performTimeConsumingTask = async() => {
+    return new Promise((resolve) =>
+      setTimeout(
+        () => { resolve('result') },
+        1800
+      )
+    );
   }
   async componentDidMount() {
     StatusBar.setHidden(true)
+    const data = await this.performTimeConsumingTask();
+
+    if (data !== null) {
+      this.setState({ isSplashLoading: false });
+    }
     try {
       const user = await firebase.auth().currentUser;
       this.setState({ user, isLoading: false })
@@ -30,6 +46,11 @@ class App extends React.Component {
     }
   }
   render() {
+    if(this.state.isSplashLoading){
+      return(
+        <SplashScreen/>
+      )
+    }
     if (this.state.isLoading) return null
     let loggedIn = false
     if (this.state.user) {
