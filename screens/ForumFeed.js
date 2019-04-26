@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  Text,
   View,
   TouchableOpacity,
   Image,
-  StyleSheet
+  StyleSheet,
+  Text
 } from 'react-native';
 
 import SafeAreaView from 'react-native-safe-area-view';
@@ -15,11 +15,13 @@ import { StreamApp,
   LikeButton } from 'react-native-activity-feed';
 import {STREAM_API_KEY, STREAM_API_URL, STREAM_APP_ID} from 'react-native-dotenv';
 
-import { CommentBox, CommentItem, CommentsContainer } from 'react-native-activity-feed-core';
+import { 
+  CommentBox, 
+  CommentItem, 
+  CommentField,
+  CommentsContainer } from 'react-native-activity-feed-core';
 
 import PostIcon from '../images/icons/post.png';
-
-var Spinner = require('react-native-spinkit');
 
 
 const CustomActivity = (props) => {
@@ -29,9 +31,11 @@ const CustomActivity = (props) => {
       Footer={
         <View>
             <LikeButton {...props} />
-            {/* <CommentItem {...props} /> */}
-            {/* <CommentsContainer {...props} /> */}
             <CommentBox {...props} />
+
+            {/* <CommentField {...props} /> */}
+            {/* <CommentItem {...props}/> */}
+            
         </View>
       }
     />
@@ -129,14 +133,7 @@ export default class ForumFeed extends React.Component {
       return(
         
         <View style={styles.container}>
-        <Spinner 
-          style={styles.spinner} 
-          isVisible={this.state.isVisible} 
-          size={100}
-          type='9CubeGrid'
-  //  types: ['CircleFlip', 'Bounce', 'Wave', 'WanderingCubes', 'Pulse', 'ChasingDots', 'ThreeBounce', 'Circle', '9CubeGrid', 'WordPress', 'FadingCircle', 'FadingCircleAlt', 'Arc', 'ArcAlt'],
-  //"#56b9d1"
-          color="#efefff"/>
+          <Text> LOADING ... </Text>
         </View>
       );
       // initial render

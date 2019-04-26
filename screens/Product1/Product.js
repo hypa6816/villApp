@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   ImageBackground,
+  Image,
   ScrollView,
   StyleSheet,
   Text,

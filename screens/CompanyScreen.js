@@ -10,8 +10,6 @@ import {
 
 } from 'react-native-activity-feed';
 
-
-
 export default class ForumScreen extends React.Component {
   constructor(props){
     super(props);
@@ -59,10 +57,23 @@ export default class ForumScreen extends React.Component {
     );
     } else {
       return(
-        <Text>
-          Loading..
-        </Text>
+        <View style={styles.container}>
+          <Text> LOADING ... </Text>
+        </View>
       )
     }
   }
 }
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+
+  spinner: {
+    marginBottom: 50
+  },
+});
