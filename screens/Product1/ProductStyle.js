@@ -76,21 +76,23 @@ export default {
     backgroundColor: 'transparent',
     ...Platform.select({
       ios: {
-        alignItems: 'center',
+        // alignItems: 'center',
         elevation: 1,
         marginTop: -1,
       },
       android: {
-        alignItems: 'center',
+        // alignItems: 'center',
       },
     }),
   },
   userImage: {
-    borderColor: mainColor,
+    borderColor: "#000",
     borderRadius: 85,
     borderWidth: 3,
     height: 170,
-    marginBottom: 15,
+    marginTop: 122,
+    marginLeft: 20,
+
     width: 170,
   },
   userNameText: {

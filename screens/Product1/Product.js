@@ -30,8 +30,6 @@ class Product extends Component {
     // img: PropTypes.string.isRequired,
     // detail: PropTypes.string.isRequired,
     containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-
-
     name: PropTypes.string.isRequired,
     location: PropTypes.string,
     industry: PropTypes.string,
@@ -110,9 +108,9 @@ class Product extends Component {
       <View style={styles.headerContainer}>
         <View style={styles.coverContainer}>
           <ImageBackground
-            source={{
-              uri: profileImage,
-            }}
+            source={
+              require('./companySplash.png')
+            }
             style={styles.coverImage}
           >
 
