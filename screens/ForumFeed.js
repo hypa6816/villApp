@@ -15,7 +15,7 @@ import { StreamApp,
   LikeButton } from 'react-native-activity-feed';
 import {STREAM_API_KEY, STREAM_API_URL, STREAM_APP_ID} from 'react-native-dotenv';
 
-import { CommentBox, CommentItem, CommentsContainer } from 'react-native-activity-feed-core';
+import { CommentBox } from 'react-native-activity-feed-core';
 
 import PostIcon from '../images/icons/post.png';
 
@@ -28,6 +28,7 @@ const CustomActivity = (props) => {
       Footer={
         <View>
             <LikeButton {...props} />
+            <CommentBox {...props} />
         </View>
       }
     />

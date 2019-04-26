@@ -86,6 +86,7 @@ class Product extends Component {
       total_employees,
       website
     } = this.props;
+ 
     return (
       <View
         style={{
@@ -93,11 +94,18 @@ class Product extends Component {
         }}
       >
         <TouchableOpacity style={[styles.navigatorButton, { flex: 2 }]}>
-          <Text style={styles.navigatorText} onPress={ ()=> Linking.openURL(website) }>VISIT WEBSITE</Text>
+          <Text 
+          style={styles.navigatorText} 
+          onPress={() => Linking.openURL(website)}>
+            VISIT WEBSITE
+          </Text>
         </TouchableOpacity>
-        {total_employees ? (<TouchableOpacity style={[styles.navigatorButton, { flex: 1 }]}>
+        
+         { total_employees ?
+         <TouchableOpacity style={[styles.navigatorButton, { flex: 1 }]}>
           <Text style={styles.navigatorText}>LOCAL EMPLOYEES: {total_employees}</Text>
-        </TouchableOpacity>): null}
+         </TouchableOpacity> : null } 
+        
       </View>
     )
   }
