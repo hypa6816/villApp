@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Linking
 } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -92,7 +93,7 @@ class Product extends Component {
         }}
       >
         <TouchableOpacity style={[styles.navigatorButton, { flex: 2 }]}>
-          <Text style={styles.navigatorText}>{website}</Text>
+          <Text style={styles.navigatorText} onPress={ ()=> Linking.openURL(website) }>{website}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={[styles.navigatorButton, { flex: 1 }]}>
           <Text style={styles.navigatorText}>{total_employees}</Text>
