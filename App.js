@@ -6,7 +6,7 @@ import { StatusBar } from 'react-native'
 
 import { connect } from 'react-redux'
 import SplashScreen from './screens/SplashScreen';
-
+import firebase from 'react-native-firebase';
 
 class App extends React.Component {
   
@@ -46,6 +46,7 @@ class App extends React.Component {
     }
   }
   render() {
+    console.log(firebase.auth().currentUser) 
     if(this.state.isSplashLoading){
       return(
         <SplashScreen/>
@@ -56,7 +57,7 @@ class App extends React.Component {
     if (this.state.user) {
       loggedIn = true
     }
-    if (this.state.user) {
+    if (loggedIn) {
       return (
         <AppNavigator/>
       )
