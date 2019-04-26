@@ -27,8 +27,6 @@ const styles = StyleSheet.create({ ...ProductStyles })
 
 class Product extends Component {
   static propTypes = {
-    // img: PropTypes.string.isRequired,
-    // detail: PropTypes.string.isRequired,
     containerStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     name: PropTypes.string.isRequired,
     location: PropTypes.string,

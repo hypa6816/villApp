@@ -99,7 +99,7 @@ export default class ForumFeed extends React.Component {
 
   async componentDidMount() {
     try {
-      const userToken = await this.getUserToken("JEEB");
+      const userToken = await this.getUserToken("demo");
       this.setState({ userToken });
     } catch (err) {
       // handle errors
@@ -123,7 +123,7 @@ export default class ForumFeed extends React.Component {
           >
             <FlatFeed
             Activity={CustomActivity} notify 
-            userId="JEEB"/>
+            userId="demo"/>
             <StatusUpdateForm feedGroup="timeline" />
           </StreamApp>
         </SafeAreaView>
