@@ -20,7 +20,7 @@ const contactData = {
   },
   "website": "destany.org",
   "bio":
-    "Web & Mobile UI/UX designer, Motion designer following the latest ui & ux trends",
+    "Periodically unemployed, looking for new opportunities",
   "company": {
     "name": "Streich, Harber and Hilpert",
     "catchPhrase": "Team-oriented hybrid neural-net",
@@ -34,16 +34,15 @@ const contactData = {
     { "id": 2, "name": "Work", "number": "+41 (112)-435-9887" }
   ],
   "emails": [
-    { "id": 1, "name": "Personal", "email": "elsie-goodman@mail.com" },
-    { "id": 2, "name": "Work", "email": "elsie@work.com" }
+    { "id": 1, "name": "Personal", "email": "matt@friends.com" },
   ],
   "resume": [
-    {"time": '09:00', "title": 'Event 1', "description": 'Event 1 Description'},
-    {"time": '10:45', "title": 'Event 2', "description": 'Event 2 Description'},
-    {"time": '12:00', "title": 'Event 3', "description": 'Event 3 Description'},
-    {"time": '14:00', "title": 'Event 4', "description": 'Event 4 Description'},
-    {"time": '16:30', "title": 'Event 5', "description": 'Event 5 Description'}
-  ],
+      {"time": 'Sept 2018', "title": 'Software Engineer at CenturyLink', "description": 'Worked in Integration Testing lab facility on QA team. Wrote QA code and participated in extensive unit testing.'},
+      {"time": 'May 2017', "title": 'Software Engineer Intern at Apptio', "description": 'Worked on mobile app UI project. '},
+      {"time": 'May 2016', "title": 'Research Assistant at CU Boulder', "description": 'Wrote code for data collection project dealing with weather patterns.'},
+      {"time": 'May 2015', "title": 'Cook at Noodles & Company', "description": 'Prepped meat and vegetables.'},
+
+    ],
   "posts": [
     {
       "id": 1,
