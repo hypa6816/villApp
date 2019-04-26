@@ -7,11 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-<<<<<<< HEAD
   Linking
-=======
-  Linking,
->>>>>>> restructured UI and added dummy data
 } from 'react-native'
 import PropTypes from 'prop-types'
 
@@ -97,20 +93,11 @@ class Product extends Component {
         }}
       >
         <TouchableOpacity style={[styles.navigatorButton, { flex: 2 }]}>
-<<<<<<< HEAD
-          <Text style={styles.navigatorText} onPress={ ()=> Linking.openURL(website) }>{website}</Text>
-=======
-          <Text 
-          style={styles.navigatorText} 
-          onPress={() => Linking.openURL({website})}>
-            VISIT WEBSITE
-            {typeof website}
-          </Text>
->>>>>>> restructured UI and added dummy data
+          <Text style={styles.navigatorText} onPress={ ()=> Linking.openURL(website) }>VISIT WEBSITE</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.navigatorButton, { flex: 1 }]}>
-          <Text style={styles.navigatorText}>{total_employees}</Text>
-        </TouchableOpacity>
+        {total_employees ? (<TouchableOpacity style={[styles.navigatorButton, { flex: 1 }]}>
+          <Text style={styles.navigatorText}>LOCAL EMPLOYEES: {total_employees}</Text>
+        </TouchableOpacity>): null}
       </View>
     )
   }
